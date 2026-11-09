@@ -250,7 +250,8 @@ def main() -> None:
 
     headline(selected, a.trades(selected, filters.interconnectors, False),
              price, statistic, price_label, sides)
-    title = f"{statistic.lower()} {price_label.lower()} per {period.lower()}"
+    scope = "over the whole selected period" if freq == "ALL" else f"per {period.lower()}"
+    title = f"{statistic.lower()} {price_label.lower()} {scope}"
     if freq is None:
         title = f"{price_label.lower()} by delivery hour"
     summary = a.summarise(frame, price, statistic, freq)
